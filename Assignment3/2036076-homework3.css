@@ -1,0 +1,75 @@
+/*table, 
+td,
+tr{
+border: solid 1px;
+}*/
+ 
+body{
+    background-color: #98eda9;
+}
+
+h1{
+ font-family: cursive;
+    
+}
+ .td1{
+    text-align: right;
+ }
+
+ header{
+
+    padding-top: 50px;
+    padding-left: 700px;
+ }
+ Body{
+        background-image: url("lambo.jpg");
+        background-color: #cccccc;
+        filter: opacity();
+       
+ }
+ .format{
+    background-color: antiquewhite;
+    width: 600px;
+    padding: 30px;
+    border-radius: 30px;
+
+ }
+ .error {
+   color: red;
+   font-size: 11px;
+ }
+
+.pwd-message{
+position: relative; 
+top: -100;
+left: 150; 
+background: transparent;
+width: 170px;
+font-size: 12px;
+border: 1px solid;
+}
+
+#review{
+   margin-top: 5px
+}
+
+table.output,
+tr.output
+td.output{
+   width: 500px;
+   background-color: antiquewhite;
+   padding: 10px;
+   border-spacing: 2px;
+   border-radius: 30px;
+
+   color: black;
+}
+
+td.outputdata{
+   width: 500px;
+   background-color: white;
+   padding: 10px;
+   border-spacing: 2px;
+
+   color: black;
+}
