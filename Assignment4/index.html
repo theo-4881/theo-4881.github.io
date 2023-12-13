@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<!--
+Name: Theo Adotama
+Name of File: 2036076-homework3.html
+Date Created: 11/08/2023
+Date Last Edited:11/11/2023
+Description: Registration Form
+-->
+<html lang="en">
+<head>
+    <title>Rent a Car!</title>
+    <!-- Load CSS -->
+    <link rel="stylesheet" href="2036076-homework4.css" />
+</head>
+<body>
+    <header class="header" id="myheader">
+        <table width = "100%"> 
+            <tr> 
+                <td> 
+                    <img src="BMW E30.png" alt="logo" width = "200px"/>
+                    <h1> Theo's Rentals </h1>
+                </td>
+                <td valign="bottom" align="right"> 
+                    Today's Date: <span id="today"></span>
+                </td>
+
+            </tr>
+
+
+        </table>
+    </header>
+<hr />
+
+<center>
+<span id="hello1"> </span>
+<span id="hello2"> </span>
+</center>
+
+    <!-- Form Start -->
+
+    <form name="signup" id="signup" action="thankyou.html" onreset="removeReview()">
+    <center>  
+    <div class="format">
+    
+    <!-- Table tag to format form -->
+    <table>
+        <tr>
+            <th colspan="5.5">Rental Registration</th>
+        </tr>
+       
+        <tr>
+            <td class="td1"><label for="fname">First Name: </label>
+            </td>
+            <td><input  type="text" 
+                        name="First Name" 
+                        id="fname" 
+                        maxlength="30" 
+                        title="letters,apostrophe, and dashes only" 
+                        pattern="['a-zA-Z']{1,30}" 
+                        required
+                        oninput="fnameValidation()">
+                    <br>
+                    <span class="error" id="fname-error"></span>
+            </td>
+        </tr>
+
+    <tr>
+        <td class="td1"><label for="lname">Last Name: </label>
+        </td>
+        <td><input  type="text" 
+                    name="Last Name" 
+                    id="fname" 
+                    maxlength="30" 
+                    title="letters,apostrophe,numbers 2-5, ie, the 3rd and dashes only" 
+                    pattern="['a-zA-Z2-5']{1,30}" 
+                    required
+                    oninput="lnameValidation()">
+                <br>
+                <span class="error" id="lname-error"></span>
+        </td>
+    </tr>
+
+    <tr>
+        <td class="td1">
+            <label for="mname"> Middle Initial: </label>
+        </td>
+        <td>
+            <input  type="text" 
+                    name="Middle Initial" 
+                    id="mname" 
+                    maxlength="1"
+                    title="letters only,no numbers"
+                    pattern="['a-zA-Z']{0,1}"
+                    size="1"
+                    oninput="mnameValidation()"
+                    >
+
+                <br>
+                <span class="error" id="mname-error"></span>
+                    
+        </td>
+    </tr>
+
+    <tr>
+        <td class="td1">
+            <label for="email"> Email: </label>
+        </td>
+        <td>
+            <input  type="email" 
+                    name="Email" 
+                    id="email" 
+                    title="in the format name@domain.tld"
+                    placeholder="name@domain.tld"
+                    pattern = "[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+                    required
+                    onblur="emailValidation()"
+                    >
+
+                    <br>
+                    <span class="error" id="dob-error"></span>
+        </td>
+    </tr>
+
+    <tr>
+        <td class = td1>
+            <label for = "phone"> Phone Number: </label>
+            <td><input  type ="tel"
+                        name="Phone"
+                        id = "phone"
+                        placeholder="123-456-7890"
+                        title="Please enter a valid Phone Number"
+                        maxlength="12"
+                        onblur="validatePhone()"
+                        required>
+
+                        <br>
+                        <span class="error" id="email-error"></span>
+                        <span class="error" id="phone-error"></span>
+            </td>
+        </td>
+    </tr>
+
+    <tr>
+        <td class="td1">
+            <label for="dob"> DOB: </label>
+        </td>
+        <td>
+            <input  type="date" 
+                    name="Date of Birth" 
+                    id="dob" 
+                    onblur="validateDob()"
+                    required>
+        </td>
+    </tr>
+
+    <tr>
+        <td class="td1">
+            <label for="ssn"> SSN: </label>
+        </td>
+        <td>
+            <input  type="password" 
+                    name="Social Security" 
+                    id="ssn" 
+                    minlength="9" 
+                    maxlength="11" 
+                    title=" Please enter a valid Social Security (e.g 123-45-6789)"
+                    onkeyup="validateSSN()"
+                    required>
+
+                    <br>
+                    <span class="error" id="ssn-error"></span>
+        </td>
+    </tr>
+<tr>
+    <th colspan = "4"><hr></th>
+</tr>
+    <tr>
+        <td class="td1">
+            <label for="address1"> Address: </label>
+        </td>
+        <td>
+            <input  type="text" 
+                    name="Address" 
+                    id="address1" 
+                    minlength="2"
+                    maxlength="30" 
+                    required
+                    onblur="addressValidation()">
+
+                <br>
+                <span class="error" id="address-error"></span>
+        </td>
+        
+    </tr>
+
+    <tr>
+    <td class="td1"> 
+        <label for="address2"> Suite or Apt: </label>
+    </td>
+    <td>
+        <input  type="text" 
+                name="Apt / Suite" 
+                id="address2" 
+                minlength="2"
+                maxlength="30">
+    </td>
+    </tr>
+
+    <tr>
+        <td class="td1"> 
+            <label for="city"> City: </label>
+        </td>
+        <td>
+            <input  type="text" 
+                    name="City" 
+                    id="city" 
+                    maxlength="30" 
+                    required
+                    onblur = "cityValidation()">
+
+                    <br> 
+                    <span class="error" id="city-error"></span>
+                
+
+                
+
+        </td>
+        <td> <label for="state">State:</label></td>
+        <td> <select name = State>
+            <option value="AL">Alabama</option>
+            <option value="AK">Alaska</option>
+            <option value="AZ">Arizona</option>
+            <option value="AR">Arkansas</option>
+            <option value="CA">California</option>
+            <option value="CO">Colorado</option>
+            <option value="CT">Connecticut</option>
+            <option value="DE">Delaware</option>
+            <option value="DC">District Of Columbia</option>
+            <option value="FL">Florida</option>
+            <option value="GA">Georgia</option>
+            <option value="HI">Hawaii</option>
+            <option value="ID">Idaho</option>
+            <option value="IL">Illinois</option>
+            <option value="IN">Indiana</option>
+            <option value="IA">Iowa</option>
+            <option value="KS">Kansas</option>
+            <option value="KY">Kentucky</option>
+            <option value="LA">Louisiana</option>
+            <option value="ME">Maine</option>
+            <option value="MD">Maryland</option>
+            <option value="MA">Massachusetts</option>
+            <option value="MI">Michigan</option>
+            <option value="MN">Minnesota</option>
+            <option value="MS">Mississippi</option>
+            <option value="MO">Missouri</option>
+            <option value="MT">Montana</option>
+            <option value="NE">Nebraska</option>
+            <option value="NV">Nevada</option>
+            <option value="NH">New Hampshire</option>
+            <option value="NJ">New Jersey</option>
+            <option value="NM">New Mexico</option>
+            <option value="NY">New York</option>
+            <option value="NC">North Carolina</option>
+            <option value="ND">North Dakota</option>
+            <option value="OH">Ohio</option>
+            <option value="OK">Oklahoma</option>
+            <option value="OR">Oregon</option>
+            <option value="PA">Pennsylvania</option>
+            <option value="RI">Rhode Island</option>
+            <option value="SC">South Carolina</option>
+            <option value="SD">South Dakota</option>
+            <option value="TN">Tennessee</option>
+            <option value="TX">Texas</option>
+            <option value="UT">Utah</option>
+            <option value="VT">Vermont</option>
+            <option value="VA">Virginia</option>
+            <option value="WA">Washington</option>
+            <option value="WV">West Virginia</option>
+            <option value="WI">Wisconsin</option>
+            <option value="WY">Wyoming</option>
+        </select></td>
+        </tr>
+
+        <tr>
+            <td class="td1">
+                <label for="zip"> ZIP Code: </label>
+            </td>
+            <td>
+                <input  type="text" 
+                        name="Zip Code" 
+                        id="zip" 
+                        max="8"
+                        title="Please enter a 5 digit Zip code"
+                        min= "5"
+                        max = "10"
+                        pattern="[0-9]{5}" 
+                        onblur="validateZipCode()"
+                        required>
+                <br>
+                <span class="error" id="zip-error"> </span> 
+
+
+            </td>
+            
+        </tr> 
+        <tr>
+            <th colspan = "4"><hr></th>
+        </tr>
+        <tr>
+            <td class="tb1"> What is your vehicle preference? <br> (Check all that apply) 
+            </td>
+            <td>
+                <input type="checkbox" name="Sedan" id ="sedan">
+                <label for="sedan">Sedan</label>
+                <br>
+                <input type="checkbox" name="Suv" id ="suv">
+                <label for="suv">Suv</label>
+                <br>
+                <input type="checkbox" name="Truck" id ="truck">
+                <label for="truck">Truck</label>
+                <br>
+                <input type="checkbox" name="Sport" id ="sports">
+                <label for="sports">Sports</label>
+                <br>
+                <input type="checkbox" name="Van" id ="van">
+                <label for="van">Van</label>
+                <br>
+                <input type="checkbox" name="Other" id ="other">
+                <label for="other">Other</label>
+            </td>
+        </tr>
+
+        <td class="td1">
+            <label for="textarea"> If selected other,<br> Please explain your preference.</label></td>
+        <td><textarea name="textarea" id="textarea" cols="20" rows="5"></textarea></td>
+
+        <tr>
+            <td class="td1"><label for="insurance"> Do you have insurance? </label></td>
+            <td>
+                <input type="radio" name="Insurance" id="yes" value="yes"> Yes
+                <input type="radio" name="Insurance" id="no" value="no"> No
+            </td>
+        </tr>
+        <tr>
+            <td class="td1"><label for="range">Credit Score</label></td>
+            <td><input type="range" value="0" min="0" max="850" oninput="this.nextElementSibling.value = this.value">
+                <output>0</output></td>
+        </tr>
+        <tr>
+            <td class="td1">
+                <label for="date"> Rent Date: </label>
+            </td>
+            <td>
+                <input type="date" name="Date" id="date" required>
+            </td>
+        </tr>
+        <tr>
+            <td class="td1">
+                <label for="return"> Expected Return Date: </label>
+            </td>
+            <td>
+                <input type="date" name="Return" id="return" required>
+            </td>
+
+
+
+        </tr>
+        <tr>
+            <th colspan="4"><hr> </th>
+        </tr>
+
+        <tr>
+            <th colspan="4"> Create Account <hr> </th>
+        </tr>
+
+        <tr>
+            <td class="td1"><label for="userid">Username:</label></td>
+            <td><input  type="text" 
+                        name="UserID" 
+                        id="userid" 
+                        maxlength="20" 
+                        onblur="validateUserId()"
+                        required>
+                <br> 
+                <span class="error" id="userid-error"></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="td1"><label for="pwd">Password:</label></td>
+            <td><input 
+                type="password" 
+                name="Password" 
+                id="pwd" 
+                onfocus="validatePassword()"
+                oninput="validatePassword()"
+                required>
+            <br> 
+            <span class="error" id = "pwd-error"></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="td1"><label for="pwd2">Confirm Password:</label></td>
+            <td><input 
+                type="password" 
+                name="pwd2" 
+                id="pwd2" 
+                required>
+                <br>
+                <span class="error" id = "pwd2-error"></span>
+            
+            
+            </td>
+        </tr>
+        <tr>
+            <th colspan="4">
+            <input type="reset" name="Reset" id="reset">
+            <input type="submit" name="Submit" id="submit" disabled>
+            <br>
+            <input type="button" name="Review" id="review" value="Review" onclick="reviewInput()">
+            <input type = "button" name="Validate" id="validate" value="validate" onclick="validateAll()">
+        </th>
+        </tr>
+    </table>
+    <div class = "pwd-message">
+        <span id = "msg1"></span> <br />
+        <span id = "msg2"></span> <br />
+        <span id = "msg3"></span> <br />
+        <span id = "msg4"></span> <br />
+        <span id = "msg5"></span> <br />
+        <span id = "msg6"></span> <br />
+    </div>
+</center>
+     </div>
+
+    </form>
+    <center>
+        <p id="showInput"></p>
+    </center>
+
+    <hr>
+<iframe src="footer.html" frameborder="0" width="100%"></iframe>
+
+<script src="2036076-homework4.js"></script>
+
+<!-- Custom Alert Box -->
+<div id="alert-box">
+    <div id="alert-content">
+        <h3> Plese fill out required information below </h3>
+        <button id="close-alert"> OK</button>
+
+    </div>
+</div>
+    </body>
+</html>
+
+<!--
+//DATE//
+const d = new Date();
+    let doutput = d.toLocaleDateString();
+    document.getElementById("today").innerHTML = doutput;
+
+//DOB//
+function validateDob(){
+ dob = document.getElementById("dob");
+ let date = new Date(dob.value);
+ let maxDate = new Date().setFullYear(new Date().getFullYear() - 120);
+
+ if(date > new Date()){
+     document.getElementById("dob-error").innerHTML = "Date can not be in the future";
+     dob.value = "";
+     return false;
+    
+  }
+   else if(date < new Date(maxDate)){
+    document.getElementById("dob-error").innerHTML = "Date can not be more than 120 years ago";
+    dob.value = "";
+    return false;
+   }
+
+   else{
+    document.getElementById("dob-error").innerHTML = "";
+    return true;
+   }
+ 
+}
+
+
+//SSN//
+
+function validateSSN(){
+    const ssn = document.getElementById("ssn").value;
+//Regular expression to write SSN//
+    const ssnRegex = /^(\d{3})-?(\d{2})-?(\d{4})$/;
+
+if(!ssnRegex.test(ssn)){
+        document.getElementById("ssn-error").innerHTML = "Please enter a valid Social Security Number (e.g 123-45-6789) ";
+        return false; 
+    } else 
+    document.getElementById("ssn-error").innerHTML = ""
+    return true;
+}
+
+//PHONE NUMBER//
+
+function validatePhone(){
+ const phoneInput = document.getElementById("phone");
+ const phone = phoneInput.value.replace(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im) //Removes all non digit characters
+
+ if(phone.length!==10){
+    document.getElementById("phone-error").innerHTML = "Invalid Phone Number";
+    return false
+ }
+
+const formattedPhone = phone.slice(0,3) + "-" + phone.slice(3,6) + "-" + phone.slice(6);
+phoneInput.value = formattedPhone; 
+document.getElementById("phone-error").innerHTML="";
+return true;
+
+}
+
+//ZIP Code//
+
+function validateZipCode(){
+    const zipInput = document.getElementById("zip");
+    let zip= zipInput.value.replace(/[^\d-]/g,"") // Remove all non digits and non-hyphen characters
+    
+    if(!zip){
+        document.getElementById("zip.error").innerHTML =  "Zip code is required"; 
+        return false;
+    }
+    
+    if(zip.length > 5){
+        zip = zip.slice(0,5); //Only keep the first 5 digit 
+    }
+
+    zipInput.value = zip; 
+    document.getElementById("zip-error").innerHTML = "";
+    return true; 
+}
+
+//USER ID//
+function validateUserId(){
+    userId = document.getElementById("userid").value;
+//Covert UserID to lowercasee
+    userId = userId.toLowerCase();
+//Redisplay the UserId in lowercase
+    document.getElementById("userid").value = userId
+
+    if(userId.length ===0){
+    document.getElementById("userid-error").innerHTML = "User ID can not be empty";
+    return false;
+    }
+
+    if(!isNaN(userID.charAt(0))){
+        document.getElementById("userid-error").innerHTMl = "User ID cam not start with a number";
+        return false;
+    }
+//Check that USer ID only contain letters, numbers, or underscores
+    let regex = /^[a-zA-Z0-9_]+$/;
+    if(!regex.test(userId)){
+        document.getElementById("userid-error").innerHTML = "User ID can only contain letters, numbers, or underscores";
+        return false;
+    } else if(userId.length < 5){
+        document.getElementById("userid-error").innerHTML = "USer ID must be at least 5 characters"
+        return false; 
+    }
+    else if(userId.length > 30){
+    document.getElementById("userid-error").innerHTML = "User ID must not exceed 30 characters"
+    return false;
+    }
+    else{
+        document.getElementById("user-error").innerHTML = "";
+        return true; 
+    }
+}
+
+//PASSWORD//
+ function validatePassword(){
+    const pwd = document.getElementById("pwd").value;
+    const user = document.getElementById("userid").value;
+
+    let errorFlag = 0;
+
+    if(!pwd.match(/[a-z]/)){
+        document.getElementById("msg1").innerHTML = "Enter at least 1 lowercase letter"
+        errorFlag = 1; 
+    }
+    else{
+        document.getElementById("msg1").innerHTML = "";
+    }
+
+    //Check for capital letters
+    if(!pwd.match(/[A-Z]/)){
+    document.getElementById("msg2").innerHTML = "Enter at least 1 capital letter"
+    errorFlag = 1;
+    }
+    else{
+        document.getElementById("msg2").innerHTML = "";
+    }
+
+    if(!pwd.match(/[0-9]/)){
+        document.getElementById("msg3").innerHTML = "Enter at least 1 number"
+        errorFlag = 1;
+        }
+        else{
+            document.getElementById("msg3").innerHTML = "";
+        }
+
+    //Check for Special Character
+     if(!pwd.match(/[!\@#\$%&*\-_\\.+\(\)]/)){
+        document.getElementById("msg4").innerHTML = "Enter at least 1 special character"
+        errorFlag = 1;
+            }
+            else{
+                document.getElementById("msg4").innerHTML = "";
+            }
+
+        //Check for length
+        if(pwd.length < 8){
+            document.getElementById("msg5").innerHTML = "Enter a minimum of 8 characters"
+            errorFlag = 1;
+        } else {
+
+            document.getElementById("msg5").innerHTML = "";
+        }
+
+        //Check password cannot equal UserID
+        if(pwd == user || pwd.includes(user)){
+            document.getElementById("msg6").innerHTML = "Password cannot equal UserID";
+            errorFlag = 1;
+        }
+        else {
+
+            document.getElementById("msg6").innerHTML = "";
+        }
+
+        //If theres no errors display nothing
+         if(errorFlag === 0){
+            document.getElementById("msg3").innerHTML = "Valid Password";
+         }
+        }
+    // Confirm Password //
+    function confirmPassword(){
+        pwd1 = document.getElementById("pwd").value;
+        pwd2 = document.getElementById("pwd2").value;
+
+        if(pwd2 != pwd1){
+            document.getElementById("pwd2-error").innerHTML = "Password do not match";
+            return false;
+        } 
+        else{
+            document.getElementById("pwd-error").innerHTML = ""
+            return true;
+        }
+
+ }
+
+ //Re-display user input//
+
+ function reviewInput(){
+    var formcontent = document.getElementById("signup");
+    var formoutput;
+    var datatype;
+    var i;
+
+    formoutput = "<table class='output'><th colspan = '3'> Your Information/th>";
+    for(i = 0; i <formcontent.lengt; i++){
+        if(formcontent.elements[i].value !=""){
+            datatype = formcontent.elements[i].type;
+            switch(datatype){
+                case "checkbox":
+                if(formcontent.elements[i].checked){
+                    formoutput = formoutput + "<tr><td align = 'right'>" + formcontent.elements[i].name + "</td>"
+                    formcontent = formoutput + "<td class='outputdata'>&#x2713;</td></tr>"
+                }
+                break;
+                case "radio":
+                if(formcontent.elements[i].checked){
+                    formoutput = formoutput + "<tr><td align= 'right'>" + formcontent.elements[i].name + "</td>"
+                    formoutput = formoutput + "<td class='outputdata'>" + formcontent.elements[i].value + "</td></tr>"
+                }
+                break;
+                case"button":
+                case "submit":
+                case "reset":
+                
+                break;
+                default:
+                    formoutput = formoutput + "<tr><td align='right'>" + formcontent.elements[i].name + "</td>"
+                    formoutput = formoutput + "<td class = outputdata'>" + formcontent.elements[i].value + "</td></tr>"
+
+
+
+
+
+            }
+        }
+
+    }
+    if(formoutput.length > 0 ){
+        formoutput = formoutput + "</table>";
+        documents.getElementById("showInput").innerHTML = formoutput;
+    }
+ }
+
+ //Remove User Input//
+
+ function removeReview(){
+    document.getElementById("showInput").innerHTML = "";
+ }
+
+
+-->

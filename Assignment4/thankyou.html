@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+Name: Theo Adotama
+Name of File: 2036076-homework3.html
+Date Created: 11/08/2023
+Date Last Edited:11/11/2023
+Description: Registration Form
+-->
+
+<html lang="en">
+<head>
+    
+    <title> Thank you! </title>
+
+    <link rel="stylesheet" href = 2036076-homework4.css>
+</head>
+<body>
+    <header>
+        <table width = "100%"> 
+            <tr> 
+                <td> 
+                    <img src="BMW E30.png" alt="logo" width = "200px"/>
+                    <h1> Theo's Rentals </h1>
+                </td>
+                <td valign="bottom" align="right"> 
+                    Today's Date: <span id="today"></span>
+                </td>
+            </tr>
+        </table>
+    </header>
+<hr />
+<center>
+    <h2> Your submission was recorded! </h2>
+    <p>Thank you for renting at Theo's Rentals</p>
+    <form action ="2036076-homework4.css">
+        <input type="submit" value="Submit another Form">
+    </form>
+</center>
+
+<script> 
+const d = new Date();
+    let doutput = d.toLocaleDateString();
+    document.getElementById("today").innerHTML = doutput;
+    </script>
+</body>
+</html>
+
+<!--
+    Insert JavaScript Code Here: 
+    JavaScript Exact File Name: HW2.JavaScript
+    
+
+-->
